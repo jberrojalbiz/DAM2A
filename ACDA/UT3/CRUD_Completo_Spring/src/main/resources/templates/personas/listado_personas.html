@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html  lang="es_es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <title>Proyecto Clase</title>
+</head>
+<body>
+    <h1>Bienvenidos al proyecto de ACDA UT4 de clase</h1>
+    <p th:text="|Hola, ${nombre}!|" />
+    <a href="/static">Index</a>
+    <a href="/templates/personas/crear">Crear persona</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Eliminar</th>
+                <th>Actualizar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="persona: ${personas}">
+                <td th:text="${persona.personaID}" />
+                <td th:text="${persona.nombre}" />
+                <td th:text="${persona.edad}" />
+                <td><a th:href="|/personas/eliminar/${persona.personaID}|">Eliminar</a> </td>
+                <td><a th:href="|/personas/actualizar/${persona.personaID}|">Editar</a> </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

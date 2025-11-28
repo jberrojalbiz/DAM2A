@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Bienvenidos al proyecto de ACDA UT4 de clase</h1>
+<p th:text="|Hola, ${nombre}!|"/>
+<a href="/static">Index</a>
+<a href="/departamentos/crear">Crear departamentos</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Localizacion</th>
+        <th>Eliminar</th>
+        <th>Editar</th>2
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="departamentos: ${departamentos}">
+        <td th:text="${departamentos.codigoID}"/>
+        <td th:text="${departamentos.nombre}"/>
+        <td th:text="${departamentos.localizacion}"/>
+        <td><a th:href="|/departamentos/eliminar/${departamentos.codigoID}|">Eliminar</a></td>
+        <td><a th:href="|/departamentos/actualizar/${departamentos.codigoID}|">Editar</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

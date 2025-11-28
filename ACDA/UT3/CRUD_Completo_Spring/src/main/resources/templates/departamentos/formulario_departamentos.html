@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/departamentos/crear}" th:object="${departamentos}" method="post">
+    <p>Nombre: <input type="text" th:field="*{nombre}"/></p>
+    <p>Edad: <input type="text" th:field="*{localizacion}"/></p>
+    <input type="hidden" th:field="*{codigoID}"/>
+    <p>
+        <input type="submit" value="Submit"/>
+        <input type="reset" value="Reset"/>
+    </p>
+</form>
+</body>
+</html>

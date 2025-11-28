@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Bienvenidos al proyecto de ACDA UT4 de clase</h1>
+<p th:text="|Hola, ${nombre}!|"/>
+<a href="/static">Index</a>
+<a href="/empleados/crear">Crear empleados</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>DNI</th>
+        <th>Telefono</th>
+        <th>Salario</th>
+        <th>Eliminar</th>
+        <th>Actualizar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="empleados: ${empleados}">
+        <td th:text="${empleados.idE}"/>
+        <td th:text="${empleados.nombre}"/>
+        <td th:text="${empleados.DNI_E}"/>
+        <td th:text="${empleados.telefono}"/>
+        <td th:text="${empleados.salario}"/>
+        <td><a th:href="|/empleados/eliminar/${empleados.idE}|">Eliminar</a></td>
+        <td><a th:href="|/empleados/actualizar/${empleados.idE}|">Editar</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
