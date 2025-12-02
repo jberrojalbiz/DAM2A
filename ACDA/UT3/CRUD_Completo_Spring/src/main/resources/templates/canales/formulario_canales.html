@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario canal</title>
+</head>
+<body>
+
+<h1 th:text="${canal.id == null} ? 'Nuevo canal' : 'Editar canal'"></h1>
+
+<form th:action="@{/canales/crear}" th:object="${canal}" method="post">
+
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Nombre del canal:</label>
+    <input type="text" th:field="*{nombre}" />
+    <br/>
+
+    <label>Descripción:</label>
+    <input type="text" th:field="*{descripcion}" />
+    <br/>
+
+    <label>Fecha de creación:</label>
+    <input type="date" th:field="*{fechaCreacion}" />
+    <br/>
+
+    <label>Usuario:</label>
+    <select name="usuarioId">
+        <option value="" disabled
+                th:selected="${canal.usuario == null}">
+            -- Selecciona un usuario --
+        </option>
+
+        <option th:each="u : ${usuarios}"
+                th:value="${u.id}"
+                th:text="${u.email}"
+                th:selected="${canal.usuario != null} ? ${canal.usuario.id} == ${u.id} : false">
+        </option>
+    </select>
+    <br/>
+
+    <button type="submit">Guardar</button>
+    <a th:href="@{/canales}">Cancelar</a>
+</form>
+
+<p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+
+</body>
+</html>

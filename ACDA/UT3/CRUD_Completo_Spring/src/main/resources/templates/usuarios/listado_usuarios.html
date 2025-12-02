@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de usuarios</title>
+</head>
+<body>
+
+<h1>Usuarios</h1>
+
+<a th:href="@{/usuarios/crear}">Nuevo usuario</a>
+&nbsp;|&nbsp;
+<a th:href="@{/canales}">Ver canales</a>
+
+<br/><br/>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Canal</th>
+        <th>Acciones</th>
+    </tr>
+
+    <tr th:each="u : ${usuarios}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.email}"></td>
+        <td th:text="${u.nombre}"></td>
+        <td th:text="|${u.apellido1} ${u.apellido2}|"></td>
+        <td th:text="${u.canalYoutube != null ? u.canalYoutube.nombre : 'Sin canal'}"></td>
+        <td>
+            <a th:href="@{|/usuarios/actualizar/${u.id}|}">Editar</a>
+            &nbsp;|&nbsp;
+            <a th:href="@{|/usuarios/eliminar/${u.id}|}">Eliminar</a>
+        </td>
+    </tr>
+</table>
+
+<p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+
+</body>
+</html>
