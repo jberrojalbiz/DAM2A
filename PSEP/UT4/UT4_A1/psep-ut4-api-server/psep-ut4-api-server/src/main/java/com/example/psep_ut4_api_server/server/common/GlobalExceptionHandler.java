@@ -1,61 +1,53 @@
 package com.example.psep_ut4_api_server.server.common;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.*;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDateTime;
 
-/**
- * Manejo global de excepciones para generar respuestas HTTP consistentes.
- */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    /**
-     * Maneja errores de validación (400 Bad Request).
-     */
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ApiError> handleNotFound(ResourceNotFoundException ex, HttpServletRequest req) {
+        ApiError body = new ApiError(
+                LocalDateTime.now(),
+                404,
+                "Not Found",
+                ex.getMessage(),
+                req.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, Object>> handleValidation(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        for (FieldError fe : ex.getBindingResult().getFieldErrors()) {
-            errors.put(fe.getField(), fe.getDefaultMessage());
-        }
+    public ResponseEntity<ApiError> handleValidation(MethodArgumentNotValidException ex, HttpServletRequest req) {
+        String msg = ex.getBindingResult().getFieldErrors().stream()
+                .map(fe -> fe.getField() + ": " + fe.getDefaultMessage())
+                .findFirst()
+                .orElse("Datos inválidos");
 
-        Map<String, Object> payload = new HashMap<>();
-        payload.put("status", 400);
-        payload.put("error", "Bad Request");
-        payload.put("message", "Errores de validación");
-        payload.put("fields", errors);
-
-        return ResponseEntity.badRequest().body(payload);
+        ApiError body = new ApiError(
+                LocalDateTime.now(),
+                400,
+                "Bad Request",
+                msg,
+                req.getRequestURI()
+        );
+        return ResponseEntity.badRequest().body(body);
     }
 
-    /**
-     * Maneja recursos no encontrados (404 Not Found).
-     */
-    @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleNotFound(NotFoundException ex) {
-        Map<String, Object> payload = new HashMap<>();
-        payload.put("status", 404);
-        payload.put("error", "Not Found");
-        payload.put("message", ex.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(payload);
-    }
-
-    /**
-     * Maneja errores inesperados (500 Internal Server Error).
-     */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, Object>> handleGeneric(Exception ex) {
-        Map<String, Object> payload = new HashMap<>();
-        payload.put("status", 500);
-        payload.put("error", "Internal Server Error");
-        payload.put("message", "Error inesperado");
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
+    public ResponseEntity<ApiError> handleGeneric(Exception ex, HttpServletRequest req) {
+        ApiError body = new ApiError(
+                LocalDateTime.now(),
+                500,
+                "Internal Server Error",
+                ex.getMessage(),
+                req.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
     }
 }

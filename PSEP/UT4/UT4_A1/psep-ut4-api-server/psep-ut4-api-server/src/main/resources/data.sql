@@ -1,6 +1,6 @@
-INSERT INTO productos (nombre, stock, precio, fecha_alta) VALUES
-('Auriculares inalámbricos', 30, 39.99, '2025-01-10'),
-('Teclado mecánico',         15, 79.50, '2025-01-12'),
-('Ratón gaming',             50, 24.95, '2025-01-15'),
-('Monitor 27 pulgadas',       8, 189.00,'2025-01-20'),
-('Webcam HD',                22, 49.90, '2025-01-25');
+INSERT IGNORE INTO peliculas (titulo, director, duracion, valoracion, fecha_estreno, genero) VALUES
+('Interstellar', 'Christopher Nolan', 169, 8.6, '2014-11-07', 'Sci-Fi'),
+('The Godfather', 'Francis Ford Coppola', 175, 9.2, '1972-03-24', 'Crime'),
+('Spirited Away', 'Hayao Miyazaki', 125, 8.6, '2001-07-20', 'Animation'),
+('Parasite', 'Bong Joon-ho', 132, 8.5, '2019-05-30', 'Thriller'),
+('The Dark Knight', 'Christopher Nolan', 152, 9.0, '2008-07-18', 'Action');
