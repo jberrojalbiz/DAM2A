@@ -1,0 +1,41 @@
+[ {
+  "id" : 1,
+  "titulo" : "Interstellar",
+  "director" : "Christopher Nolan",
+  "duracion" : 169,
+  "valoracion" : 8.6,
+  "fechaEstreno" : [ 2014, 11, 7 ],
+  "genero" : "Sci-Fi"
+}, {
+  "id" : 2,
+  "titulo" : "The Godfather",
+  "director" : "Francis Ford Coppola",
+  "duracion" : 175,
+  "valoracion" : 9.2,
+  "fechaEstreno" : [ 1972, 3, 24 ],
+  "genero" : "Crime"
+}, {
+  "id" : 3,
+  "titulo" : "Spirited Away",
+  "director" : "Hayao Miyazaki",
+  "duracion" : 125,
+  "valoracion" : 8.6,
+  "fechaEstreno" : [ 2001, 7, 20 ],
+  "genero" : "Animation"
+}, {
+  "id" : 4,
+  "titulo" : "Parasite",
+  "director" : "Bong Joon-ho",
+  "duracion" : 132,
+  "valoracion" : 8.5,
+  "fechaEstreno" : [ 2019, 5, 30 ],
+  "genero" : "Thriller"
+}, {
+  "id" : 5,
+  "titulo" : "The Dark Knight",
+  "director" : "Christopher Nolan",
+  "duracion" : 152,
+  "valoracion" : 9.0,
+  "fechaEstreno" : [ 2008, 7, 18 ],
+  "genero" : "Action"
+} ]

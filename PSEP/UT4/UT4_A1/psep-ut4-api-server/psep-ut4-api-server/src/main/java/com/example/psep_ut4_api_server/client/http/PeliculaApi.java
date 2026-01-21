@@ -4,6 +4,8 @@ import com.example.psep_ut4_api_server.client.dto.PeliculaDto;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.service.annotation.*;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.util.List;
 
@@ -24,4 +26,12 @@ public interface PeliculaApi {
 
     @DeleteExchange("/{id}")
     void delete(@PathVariable Long id);
+
+    @GetExchange("/search")
+    List<PeliculaDto> search(
+            @RequestParam(required = false) String titulo,
+            @RequestParam(required = false) String genero,
+            @RequestParam(required = false) String director
+    );
+
 }

@@ -3,6 +3,8 @@ package com.example.psep_ut4_api_server.server.pelicula;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import com.example.psep_ut4_api_server.server.review.Review;
+import java.util.List;
 
 @Entity
 @Table(name = "peliculas")
@@ -29,6 +31,9 @@ public class Pelicula {
 
     @Column(nullable = false, length = 50)
     private String genero;          // texto
+
+    @OneToMany(mappedBy = "pelicula", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
 
     public Pelicula() {}
 
@@ -58,4 +63,6 @@ public class Pelicula {
     public void setValoracion(BigDecimal valoracion) { this.valoracion = valoracion; }
     public void setFechaEstreno(LocalDate fechaEstreno) { this.fechaEstreno = fechaEstreno; }
     public void setGenero(String genero) { this.genero = genero; }
+    public List<Review> getReviews() { return reviews; }
+    public void setReviews(List<Review> reviews) { this.reviews = reviews; }
 }

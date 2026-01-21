@@ -1,0 +1,11 @@
+[
+  {
+    "id": null,
+    "titulo": "The Godfather",
+    "director": "Francis Ford Coppola",
+    "duracion": 175,
+    "valoracion": 9.2,
+    "fechaEstreno": "1972-03-24",
+    "genero": "Crime"
+  }
+]

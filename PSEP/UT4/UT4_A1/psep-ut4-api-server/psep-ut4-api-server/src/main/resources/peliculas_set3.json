@@ -1,0 +1,20 @@
+[
+  {
+    "id": null,
+    "titulo": "Whiplash",
+    "director": "Damien Chazelle",
+    "duracion": 107,
+    "valoracion": 8.5,
+    "fechaEstreno": "2014-10-10",
+    "genero": "Drama"
+  },
+  {
+    "id": null,
+    "titulo": "La La Land",
+    "director": "Damien Chazelle",
+    "duracion": 128,
+    "valoracion": 8.0,
+    "fechaEstreno": "2016-12-09",
+    "genero": "Musical"
+  }
+]

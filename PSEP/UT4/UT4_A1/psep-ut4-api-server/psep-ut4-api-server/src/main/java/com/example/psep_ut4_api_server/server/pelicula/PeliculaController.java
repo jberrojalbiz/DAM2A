@@ -43,4 +43,14 @@ public class PeliculaController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<PeliculaResponse>> search(
+            @RequestParam(required = false) String titulo,
+            @RequestParam(required = false) String genero,
+            @RequestParam(required = false) String director
+    ) {
+        return ResponseEntity.ok(service.search(titulo, genero, director));
+    }
+
 }
