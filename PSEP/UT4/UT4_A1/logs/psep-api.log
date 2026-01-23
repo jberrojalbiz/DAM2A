@@ -738,3 +738,6 @@ Caused by: java.sql.SQLException: Failed to open the referenced table 'peliculas
 2026-01-21T10:10:59.312+01:00  INFO 7104 --- [psep-ut4-api-server] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2026-01-21T10:10:59.312+01:00  INFO 7104 --- [psep-ut4-api-server] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
 2026-01-21T10:12:19.123+01:00  INFO 7104 --- [psep-ut4-api-server] [http-nio-8081-exec-3] c.e.p.server.pelicula.PeliculaService    : CREAR película: titulo='sdfsdf', director='sdfds'
+2026-01-21T10:48:17.015+01:00  INFO 7104 --- [psep-ut4-api-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-21T10:48:17.018+01:00  INFO 7104 --- [psep-ut4-api-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-21T10:48:17.023+01:00  INFO 7104 --- [psep-ut4-api-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
